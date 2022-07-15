@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>受付</title>
+</head>
+<body>
+    <div style="text-align: center;">   
+    <form method="POST" action="{% url 'welcome' %}">
+        {% csrf_token %}
+    <h1>受付画面</h1>
+    <p><h3>ご来訪、誠にありがとうございます</h3>
+    <p><h6>入力フォームに必要事項のご記入をお願いします</h6>
+    <p><input style="width:15rem;" name="input_name" placeholder="お名前を入力して下さい" required autocomplete="off"></p>
+    <p><input style="width:15rem;" name="acompany" placeholder="同行された方のお名前を入力して下さい" required autocomplete="off"></p>
+    <p><input style="width:15rem;" name="company" placeholder="社名を入力して下さい" required autocomplete="off"></p>
+    <p>同伴人数<select name="person">
+        <option value="1">1名</option>
+        <option value="2">2名</option>
+        <option value="3">3名</option>
+
+        </select></p>
+    <p><input style="width:15rem;" name="position" placeholder="役職を入力して下さい" required autocomplete="off" /></p>
+    <p><input name="dates" placeholder="日付" type="date"></p>
+    <p><textarea rows="10" cols="60" size="20" name="text1" placeholder="ご用件を入力して下さい" required autocomplete="off" ></textarea>
+    <br>
+    <input type="submit" value="登録" />
+    <br>
+    <div style="padding:10px; margin-bottom:10px; border:solid 1px; top:50px; left:50px; position:fixed;text-align: center;">
+    <div id="time" ></div>
+    </div>
+    
+    {% comment %} <a> href="{% url '' %}" {% endcomment %}
+    </form>
+    <script>
+        time();
+        function time(){
+            var now = new Date();
+            $("#time").html('<h5>'+ '現在時刻' + '<br>'+ now.toLocaleTimeString() + '</h5>');
+        }
+        setInterval('time()',1000);
+    </script>
+    <script type="text/javascript" style="bottom:50px; right:50px; position:fixed;"><!--
+        function myEnter(){
+           myPassWord=prompt("管理画面のパスワードを入力してください","");
+           if ( myPassWord == "pass1" ){
+              location.href = "{% url 'kanri' %}";
+           }else{
+              alert( "パスワードが違います!" );
+           }
+        }
+        // --></script>
+        
+        <form>
+        <input type="button" value="管理画面" onclick="myEnter()">
+        </form>
+        
+</div>
+</body>
+</html>
