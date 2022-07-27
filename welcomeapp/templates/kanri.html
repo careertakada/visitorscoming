@@ -13,6 +13,8 @@
                 <th width="2%"></th>
                 <th width="10%">名前</th>
                 <th width="10%">同伴者名</th>
+                <th width="10%">追加者</th>
+                <th width="10%">追加者</th>
                 <th width="15%">会社名</th>
                 <th width="5%">同伴人数</th>
                 <th width="10%">来訪日</th>
@@ -26,7 +28,9 @@
               <tr>
                 <td><a href="{% url 'edit_del' visitor.id %}">編集</a></td>
                 <td>{{ visitor.person_name }}</td>
-                <td>{{ visitor.accompany }}</td>
+                <td>{{ visitor.douhan }}</td>
+                <td>{{ visitor.douhan1 }}</td>
+                <td>{{ visitor.douhan2 }}</td>
                 <td>{{ visitor.company }}</td>
                 <td>{{ visitor.person }}</td>
                 <td>{{ visitor.dates }}</td>

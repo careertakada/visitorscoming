@@ -24,7 +24,7 @@
             <div class="input-group-prepend">
                 <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">同伴者名</div>
             </div>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.accompany }}" name="edit5">
+            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.douhan}}" name="edit5">
           </div></th>
           <th>
             <div class="input-group">
@@ -35,19 +35,20 @@
             </div>
           </th> 
         <th><div class="input-group">
-            <div class="input-group-prepend">
-              <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">同伴人数</div>
-            </div>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" input value="{{ visitor.person }}" name="edit3">
-          </div></th>
+              <div class="input-group-prepend">
+                 <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">同伴人数</div>
+              </div>
+              <input type="text" class="form-control" aria-describedby="basic-addon1" input value="{{ visitor.person }}" name="edit3">
+            </div></th>
           
           <th><div class="input-group">
             <div class="input-group-prepend">
               <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">来訪時間</div>
-          <td>{{ visitor.visit_time | date:'H:i:s'}}</td>
-          </div></th>
+              <td>{{ visitor.visit_time | date:'H:i:s'}}</td>
+            </div></th>
 
-          <th><div class="input-group">
+          <th>
+          <div class="input-group">
             <div class="input-group-prepend">
               <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">用件</div>
             </div>
