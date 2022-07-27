@@ -6,56 +6,65 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理者専用ページ</title>
+    <title>編集・削除画面</title>
 </head>
 <body>
     <div style="text-align: center;">
-        <table border="1" width="100%">  
+        <table border="1" width="100%">
+          <form method="POST">
+              {% csrf_token %}  
         <h1>編集画面</h1>
         <th><div class="input-group">
-            <div class="input-group-prepend">
-              <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">名前</div>
-            </div>
+              <div class="input-group-prepend">
+                <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">名前</div>
+              </div>
             <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.person_name }}" name="edit1">
-          </div>
+          </div></th>
           <th><div class="input-group">
             <div class="input-group-prepend">
                 <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">同伴者名</div>
             </div>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.acompany }}" name="edit5">
-          </div>
-          <th><div class="input-group">
-            <div class="input-group-prepend">
-              <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">会社名</div>
-            </div>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.accompany }}" name="edit5">
+          </div></th>
+          <th>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">会社名</div>
+              </div>
             <input type="text" class="form-control" aria-describedby="basic-addon1" input value="{{ visitor.company }}" name="edit2">
-          </div>
-        </th> 
+            </div>
+          </th> 
         <th><div class="input-group">
             <div class="input-group-prepend">
               <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">同伴人数</div>
             </div>
             <input type="text" class="form-control" aria-describedby="basic-addon1" input value="{{ visitor.person }}" name="edit3">
-          </div>
+          </div></th>
           
           <th><div class="input-group">
             <div class="input-group-prepend">
               <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">来訪時間</div>
           <td>{{ visitor.visit_time | date:'H:i:s'}}</td>
-          </div> 
+          </div></th>
 
           <th><div class="input-group">
             <div class="input-group-prepend">
               <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">用件</div>
             </div>
-            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.text1 }}" name="edit25">
-          </div> 
+            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.affair1 }}" name="edit25">
+          </div></th> 
+
+          <th><div class="input-group">
+            <div class="input-group-prepend">
+              <div class="form-control" style="background-color:#28a745; width:4rem; color:white;">その他</div>
+            </div>
+            <input type="text" class="form-control" aria-describedby="basic-addon1" value="{{ visitor.affair2 }}" name="edit26">
+          </div></th>
         
-        <form method="POST">
-            {% csrf_token %}
         <tr>
             <td><button>更新</button></td>
         </tr>
+        
         </form>
     </table>
     </div>

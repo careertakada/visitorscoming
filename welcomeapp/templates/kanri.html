@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>管理画面</title>
+    <title>管理者専用画面</title>
 </head>
 <body>
     <div style="text-align: center;">
@@ -15,8 +15,10 @@
                 <th width="10%">同伴者名</th>
                 <th width="15%">会社名</th>
                 <th width="5%">同伴人数</th>
+                <th width="10%">来訪日</th>
                 <th width="10%">時刻</th>
-                <th width="60%">用件</th>
+                <th width="30%">用件</th>
+                <th width="30%">その他</th>
                 <th width="2%"></th>
 
               </tr>
@@ -24,16 +26,20 @@
               <tr>
                 <td><a href="{% url 'edit_del' visitor.id %}">編集</a></td>
                 <td>{{ visitor.person_name }}</td>
-                <td>{{ visitor.acompany }}</td>
+                <td>{{ visitor.accompany }}</td>
                 <td>{{ visitor.company }}</td>
                 <td>{{ visitor.person }}</td>
-                <td>{{ visitor.visit_time | date:"H:i:s" }}</td>
-                <td>{{ visitor.text1 }}</td>
+                <td>{{ visitor.dates }}</td>
+                <td>{{ visitor.times | date:"H:i:s" }}</td>
+                <td>{{ visitor.affair1 }}</td>
+                <td>{{ visitor.affair2 }}</td>
                 <td><a href="{% url 'deldata' visitor.id %}">削除</a></td>
               </tr>
               {% endfor %}
         </table>
     </div>
+    <button onclick="location.href='{% url 'iriguchi' %}'">戻る</button>
+
     
 </body>
 </html>

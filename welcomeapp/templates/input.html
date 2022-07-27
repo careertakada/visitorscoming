@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>受付</title>
+    <title>来訪者受付画面</title>
     <style type="text/css">
 
         .b {
@@ -71,15 +71,8 @@
                 height:auto;
                 
             }
-    
-            .time {
-                padding:10px;
-                margin-bottom:10px;
-                border:solid 1px;
-                text-align:center;
-                position:static;
-            }
 
+            
         }
         
         </style>
@@ -88,40 +81,82 @@
     <div style="text-align: center;">   
     <form method="POST" action="{% url 'welcome' %}">
         {% csrf_token %}
-    <h1 style="font-family:'Impact'">受付画面</h1>
-    <p><h3>ご来訪、誠にありがとうございます。</h3>
+    <h1 style="font-family:'serif'">受付画面</h1>
+    <p><h3>ご来訪、誠にありがとうございます。</h3></p>
         <div class="uketuke">
         <img src="/media/visitor_cord/uketukejyo2.png" class="uketuke-img">
         <h5 style="font-family:'Impact'" >Career Systems</h5>
         </div>
-    <p><h6>入力フォームに必要事項のご記入をお願いします。</h6>
-    <p>来訪者様のお名前<input style="width:25rem;" name="input_name" text="お名前" placeholder="お名前を入力して下さい。" required autocomplete="off"></p>
-    <p>同伴者様のお名前<input style="width:17rem;" name="acompany" placeholder="お名前を入力して下さい。" required autocomplete="off" >
-        同伴人数 <select name="person">
-            <option value="1">1名</option>
-            <option value="2">2名</option>
-            <option value="3">3名</option>
-            </select></p>
+    <p><h5>入力フォームに必要事項の記入をお願いします。</h5></p>
+    <p><div style="padding-right:2rem;">来訪者様のお名前<input style="width:25rem;" name="input_name" text="お名前" placeholder="お名前を入力して下さい。" required autocomplete="off"></div></p>
+    <div class="col-auto my-3" >
+        <div id="Box1" class="my-3" style="padding-right:3.5rem;">
+            <p>同伴者様のお名前<input style="width:20rem; " name="accompany" placeholder="お名前を入力して下さい。" required autocomplete="off" >
+                <select id="sample" name="person" onchange="viewChange();">
+                    <option value="select1">1名</option>
+                    <option value="select2">2名</option>                       
+                    <option value="select3">3名</option>
+               </select>
+            </p>
+        </div>
+        <div id="Box2" class="my-3" style="padding-right:7rem;">
+            <p>同伴者様のお名前<input style="width:20rem;" name="accompany" placeholder="お名前を入力して下さい。" required autocomplete="off" ></p>
+        </div>
+        <div id="Box3" class="my-3" style="padding-right:7rem;">
+            <p>同伴者様のお名前<input style="width:20rem;" name="accompany" placeholder="お名前を入力して下さい。" required autocomplete="off" ></p>
+        </div>
+    </div>
+    <script>
+        document.getElementById('Box1').style.display = "";
+        document.getElementById('Box2').style.display = "none";
+        document.getElementById('Box3').style.display = "none";
+    </script>
+
+    <script>
+    function viewChange(){
+        if(document.getElementById('sample')){
+            id = document.getElementById('sample').value;
+            if(id == 'select1'){
+                document.getElementById('Box1').style.display = "";
+                document.getElementById('Box2').style.display = "none";
+                document.getElementById('Box3').style.display = "none";
+            }else if(id == 'select2'){
+                document.getElementById('Box1').style.display = "";
+                document.getElementById('Box2').style.display = "";
+                document.getElementById('Box3').style.display = "none";
+            }
+            else if(id == 'select3'){
+                document.getElementById('Box1').style.display = "";
+                document.getElementById('Box2').style.display = "";
+                document.getElementById('Box3').style.display = "";
+            }
+        }
+    
+    window.onload = viewChange;
+    }
+    </script>
     </p>
-    <p><div style="text-align: left;"><h6>同伴人数は最大3名まで選択可能です。</h6></div></p>
-    <p><div text-align: left;><h6>３名以上でお越しのお客様は、入力欄を空欄の上お手数ではございますが担当者へ人数をお伝え下さい。</h6></div></p>
+    <p><div style="padding-right:29rem;"><h6>同伴人数は最大3名まで選択可能です。</h6></div></p>
+    <p><div><h6>３名以上でお越しのお客様は、入力欄を空欄の上お手数ではございますが担当者へ人数をお伝え下さい。</h6></div></p>
     <p>所属先会社名<input style="width:25rem;" name="company" placeholder="会社名を入力して下さい" required autocomplete="off"></p>
-    <p>担当者の氏名<input style="width:25rem;" name="" placeholder="担当者名を入力して下さい" required autocomplete="off"></p>
+    <p><div style="padding-right:3rem;">担当者名<input style="width:20rem;" name="tantousya" placeholder="担当者名を入力して下さい" required autocomplete="off"></div></p>
     <p><div text-align: left;>来訪日<input name="dates" placeholder="日付" type="date"></div></p>
-    <div class="time">
+    <div class="time" name="times">
     <div id="time" ></div>
     </div>
-    <p>ご用件<select name="affair">
-        <option value="1">面接</option>
-        <option value="2">打合せ</option>
-        <option value="3">営業</option>
-        <option value="4">私用</option>
-        </select></div></p>
-    <p><h6>上記ご用件選択肢に該当しない場合は、下部入力フォームにご入力して下さい。</h6></p>
-    <p>その他<input style="width:25rem;" name="affair2" placeholder="入力フォーム" ></p>
+    <p>ご用件<select name="affair1">
+        <option value="面接">面接</option>
+        <option value="打合せ">打合せ</option>
+        <option value="営業">営業</option>
+        <option value="私用">私用</option>
+        </select></p>
+    <p><h6>上記ご用件選択肢に該当しない場合は、下部入力フォームに入力して下さい。</h6></p>
+    <p>その他<input style="width:28rem;" name="affair2" placeholder="その他ご用件、詳細を入力して下さい" ></p>
+    <br><p>入力が終わりましたら、『登録』を押してください。</p>
     <br>
     <input type="submit" value="登録" />
     <br>
+
     
     {% comment %} <a> href="{% url '' %}" {% endcomment %}
     </form>
@@ -129,13 +164,14 @@
         time();
         function time(){
             var now = new Date();
-            $("#time").html('<h5>'+ '現在時刻' + '<br>'+ now.toLocaleTimeString() + '</h5>');
+            $("#time").html('<h5>'+ '現在時刻' + '<br>'+ now.toLocaleTimeString() + '</h5>'
+            + '<input name="time" type="hidden" value= "'+ now.toLocaleTimeString() + '">');
         }
         setInterval('time()',1000);
     </script>
     <script type="text/javascript" style="bottom:50px; right:50px; position:fixed;"><!--
         function myEnter(){
-           myPassWord=prompt("管理画面のパスワードを入力してください","");
+           myPassWord=prompt("管理者パスワードを入力してください","");
            if ( myPassWord == "career31" ){
               location.href = "{% url 'kanri' %}";
            }else{
@@ -152,4 +188,3 @@
         
 </div>
 </body>
-</html>
