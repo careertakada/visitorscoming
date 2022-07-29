@@ -3,7 +3,7 @@
 <html lang="ja" dir="ltr">
 <head>
 <meta charset="utf-8">
-<title>動作確認画面</title>
+<title>管理へ</title>
 <link rel="stylesheet" href='{% static "App_Folder_css/css/style.css" %}'/>
 <style type="text/css">
 
@@ -40,56 +40,20 @@
     }
 
     
-    .size1{
-      font-size:30px; 
-      width: 80px;
-      height:45px;
 
-    }
-
-    .size{
-        font-size:30px; 
-        width: 50px;
-        height:30px;
-  
-      }
-    
-    class="4498"{
-        padding-right:25px; 
-        padding-left:25px;
-        margin-bottom:10px;
-        top:50px; right:50px;
-        position:absolute;
-        width:20%;
-        height:60%; 
-        text-align:center; 
-
-    }
-    
-    
-    img.4498-img {
-        width:80%;
-        height:auto;
-        
-    }
-  
   </style>
 </head>
 <body>
  <br>
- <h1><style color="red"> {{ID}}</style>さんようこそ！！</h1>
+ <h1>{{ userid }}さんようこそ！！</h1>
  <br>
  <br>
  <p><button onclick="location.href='{% url 'kanri' %}'" class="size1">管理</button></p>
  <p>【管理】ボタンを押すと、管理画面へ遷移します。</p>
  <br>
- <p> <div class="4498">
-    <img src="/media/visitor_cord/4498.png" class="4498-img"></p>
- <br>
- <br>
- <br>
- <br>
- <br>
+  <div class="4498" style="text-align: center; margin-right:auto;  ">
+  <img src="/media/visitor_cord/4498.png" width="235px" height="250px">
+  </div>
  <br>
  <br>
  <br>

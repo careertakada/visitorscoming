@@ -2,6 +2,8 @@ from django.db import models
 
 from django.contrib.auth.models import User # ユーザー認証
 
+from django.core.mail import EmailMultiAlternatives
+
 # Create your models here.
 class Visitors(models.Model):
     person_name = models.CharField(max_length=20, null=True)
@@ -15,6 +17,7 @@ class Visitors(models.Model):
     dates = models.DateTimeField(null=True)# 日付
     affair1 = models.CharField(max_length=30,)#用件
     affair2 = models.CharField(max_length=30, null=True)#その他の用件
+    times=models.DateTimeField(auto_now_add=True, null=True)
 
 class Account(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -22,7 +25,7 @@ class Account(models.Model):
     first_name = models.CharField(max_length=100)
     account_image = models.ImageField(upload_to="profile_pics",blank=True)
 
-def __str__(self):
+    def __str__(self):
         return self.user.username
 
 
@@ -33,4 +36,7 @@ def __str__(self):
     # modified = models.DateTimeField(auto_now=True, help_text='更新日')
 
     #visit_
-times=models.DateTimeField(auto_now_add=True, null=True)
+class Activities(models.Model):
+    user = models.ForeignKey(Account, on_delete=models.CASCADE)
+    content = models.ForeignKey(Visitors,on_delete=models.CASCADE)
+    times=models.DateTimeField(auto_now_add=True, null=True)

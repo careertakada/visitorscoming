@@ -10,8 +10,10 @@
     h1{
         text-align: center;
       }
-      
-      div.reg{
+    
+    P { text-align: center }
+  
+    div.reg{
         background-color: #EEEEEE;
         margin-left: 15%;
         margin-right: 15%;
@@ -49,6 +51,7 @@
 
  {% if AccountCreate %}
    <h1>登録完了!</h1>
+   <p><button onclick="location.href='{% url 'Login' %}'" class="">ログイン画面へ</button></p>
 
  {% else %}
    <div class="reg">
@@ -62,7 +65,6 @@
    <input class="btn" type="submit" name="" value="登録">
    </td></tr>
    </form>
-
    </table>
    </div>
  {% endif %}
